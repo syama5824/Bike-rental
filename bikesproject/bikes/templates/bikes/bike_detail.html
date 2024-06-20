@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ bike.name }} Details{% endblock %}
+
+{% block content %}
+    <h1>{{ bike.name }}</h1>
+    <p>Category: {{ bike.category }}</p>
+    <p>Price per Month: {{ bike.price_per_month }}</p>
+    <p>Price per Day: {{ bike.price_per_day }}</p>
+    <p>Registration Number: {{ bike.registration_number }}</p>
+    <p>Model Name: {{ bike.model_name }}</p>
+    <p>Status: {{ bike.status }}</p>
+    <p>Brand Name: {{ bike.brand_name }}</p>
+    <p>City: {{ bike.city }}</p>
+    <p>Description: {{ bike.description }}</p>
+    <p>Kilometers Driven: {{ bike.kilometers_driven }}</p>
+    <p>Location: {{ bike.location }}</p>
+    <button>Book Now</button>
+{% endblock %}

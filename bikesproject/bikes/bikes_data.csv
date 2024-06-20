@@ -1,0 +1,24 @@
+Category,Name,Price per month,Price per Day,Registration Number,imagefile,Purchase Date,Model Name,Status,Brand Name,City,Description,Kilometers Driven,Location
+Scooty,Suzuki Access,3000,100,KA01 AB 1111,access125.png,,Access,False,Suzuki,Bengaluru,,10000,HSR layout
+Scooty,Honda Activa,3000,100,KA01 AB 1111,activa.png,,Activa,False,Honda,Bengaluru,,10000,HSR layout
+Scooty,Honda Activa 6G,3000,100,KA01 AB 1111,activa6g.png,,Activa 6G,False,Honda,Bengaluru,,10000,HSR layout
+Scooty,Honda Grazia 125,3000,100,KA01 AB 1111,grazia125.png,,Grazia 125,False,Honda,Bengaluru,,10000,HSR layout
+EV,Ather 450X,3000,100,KA01 AB 1111,450x.png,,450X,False,Ather,Bengaluru,,10000,HSR layout
+Scooty,Honda Dio,3000,100,KA01 AB 1111,dio.png,,Dio,False,Honda,Bengaluru,,10000,HSR layout
+Scooty,Honda Aviator,3000,100,KA01 AB 1111,aviator.png,,Aviator,False,Honda,Bengaluru,,10000,HSR layout
+Scooty,Honda Activa 4G,3000,100,KA01 AB 1111,activa4g.png,,Activa 4G,False,Honda,Bengaluru,,10000,HSR layout
+Scooty,Aprilia SR 125,3000,100,KA01 AB 1111,apriliasr125.png,,SR 125,False,Aprilia,Bengaluru,,10000,HSR layout
+Scooty,TVS Ntorq 125,3000,100,KA01 AB 1111,TVSNTORQ125.png,,Ntorq 125,False,TVS,Bengaluru,,10000,HSR layout
+Scooty,Aprilia SR 150,3000,100,KA01 AB 1111,apriliasr150.png,,SR 150,False,Aprilia,Bengaluru,,10000,HSR layout
+Gear Bike,Honda CB Hornet 160,4000,100,KA01 AB 1111,cbhornet160.png,,CB Hornet 160,False,Honda,Bengaluru,,10000,HSR layout
+Gear Bike,Bajaj Avenger Cruise 220,4000,100,KA01 AB 1111,bajajavenger220.png,,Avenger Cruise 220,False,Bajaj,Bengaluru,,10000,HSR layout
+Gear Bike,Yamaha FZ V3,4000,100,KA01 AB 1111,fzv3.png,,FZ V3,False,Yamaha,Bengaluru,,10000,HSR layout
+Gear Bike,Honda X Blade,4000,100,KA01 AB 1111,xblade.png,,X Blade,False,Honda,Bengaluru,,10000,HSR layout
+Gear Bike,Bajaj Pulsar 150 Neon,4000,100,KA01 AB 1111,pulsor150neon.png,,Pulsar 150 Neon,False,Bajaj,Bengaluru,,10000,HSR layout
+Scooty,Honda Activa 5G,3000,100,KA01 AB 1111,activa4g.png,,Activa 5G,False,Honda,Bengaluru,,10000,HSR layout
+Scooty,Yamaha Fascino,3000,100,KA01 AB 1111,fascino.png,,Fascino,False,Yamaha,Bengaluru,,10000,HSR layout
+Gear Bike,Royal Enfield Huntur,5000,100,KA01 AB 1111,huntur.png,,Huntur,False,Royal Enfield,Bengaluru,,10000,HSR layout
+Gear Bike,Royal Enfield Classic,5000,100,KA01 AB 1111,classic.png,,Classic,False,Royal Enfield,Bengaluru,,10000,HSR layout
+Gear Bike,Royal Enfield meteor,5000,100,KA01 AB 1111,meteror.png,,Meteor,False,Royal Enfield,Bengaluru,,10000,HSR layout
+Gear Bike,Honda Highness,5000,100,KA01 AB 1111,highness.png,,Highness,False,Honda,Bengaluru,,10000,HSR layout
+Gear Bike,Honda CB350,5000,100,KA01 AB 1111,cb350.png,,CB350,False,Honda,Bengaluru,,10000,HSR layout

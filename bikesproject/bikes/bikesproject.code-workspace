@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../bikeProject"
+		},
+		{
+			"path": "../../gitvizygo/vizygo-bike-rental-frontend"
+		}
+	],
+	"settings": {}
+}

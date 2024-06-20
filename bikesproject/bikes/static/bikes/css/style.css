@@ -1,0 +1,65 @@
+/* Style the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Style the navigation menu */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Style the main content */
+main {
+    padding: 20px;
+}
+
+/* Style the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+/* Style the home page */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.bike-name {
+    background-color: rgb(133, 25, 17); /* Highlight color */
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #fff;
+}
+
+/* Style for the logout link */
+#logout-link {
+    color: rgb(225, 219, 219); /* Change color to your desired color */
+    /* Add more styles as needed */
+}
+
+#profile-link {
+    color: rgb(225, 219, 219); /* Change color to your desired color */
+    /* Add more styles as needed */
+}
+

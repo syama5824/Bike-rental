@@ -1,0 +1,40 @@
+<!-- templates/bikes/contact_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/bikes/api/categories/')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Data fetched from the API
+                    const categoriesDiv = document.getElementById('categories-data');
+                    categoriesDiv.innerHTML = `
+                        <h3>Bike Categories:</h3>
+                        <ul>
+                            <li><strong>Scooties:</strong> ${data.scooties.join(", ")}</li>
+                            <li><strong>EVs:</strong> ${data.evs.join(", ")}</li>
+                            <li><strong>Gear Bikes:</strong> ${data.gear_bikes.join(", ")}</li>
+                        </ul>
+                    `;
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {% load crispy_forms_tags %}
+        {{ form|crispy }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="categories-data">
+        <!-- Categories data will be loaded here by JavaScript -->
+    </div>
+</body>
+</html>

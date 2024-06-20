@@ -1,0 +1,48 @@
+<!-- templates/bikes/all_bikes.html -->
+{% extends 'base.html' %}
+
+{% block title %}All Bikes{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>All Bikes</h2>
+    <div class="row" id="all-bikes">
+        {% for bike in bikes %}
+        <div class="col-md-3 mb-4 bike-card" data-category="{{ bike.category }}">
+            <div class="card">
+                <img src="{{ bike.image_url }}" class="card-img-top" alt="{{ bike.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ bike.name }}</h5>
+                    <p class="card-text">Category: {{ bike.category }}</p>
+                    <p class="card-text">Price per Day: {{ bike.price_per_day }}</p>
+                    <p class="card-text">Price per Month: {{ bike.price_per_month }}</p>
+                    <button class="btn btn-success book-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-bike-name="{{ bike.name }}">Book Now</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Book Bike</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                    </div>
+                    <!-- Other form fields for booking -->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

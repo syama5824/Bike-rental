@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ view.kwargs.category|title }}</h2>
+    <div class="row">
+        {% load custom_filters %}
+
+        {% for bike in bikes %}
+        <div class="col-md-3 mb-4 bike-card" data-category="{{ bike.category }}">
+            <div class="card">
+                <img src="{{ bike.image_url }}" class="card-img-top" alt="{{ bike.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ bike.name }}</h5>
+                    <p class="card-text">Category: {{ bike.category }}</p>
+                    <p class="card-text">Price per Day: {{ bike.price_per_day }}</p>
+                    <p class="card-text">Price per Month: {{ bike.price_per_month }}</p>
+                    <a href="{% url 'bike-detail' category=bike.category|slugify bike_name=bike.name|slugify %}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

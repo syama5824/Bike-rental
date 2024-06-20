@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bike Rental Service{% endblock %}</title>
+    {% load static %}
+    {% load custom_tags %}
+    <link rel="stylesheet" href="{% static 'bikes/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'home' %}">Bike Rental Service</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <!-- Login Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <form class="px-4 py-3" id="otpForm">
+                                <div class="form-group">
+                                    <label for="phone_number">Phone Number</label>
+                                    <input type="text" class="form-control" id="phone_number" placeholder="Enter your phone number" required>
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="sendOtp()">Send OTP</button>
+                            </form>
+                            <form class="px-4 py-3" id="verifyOtpForm" style="display: none;">
+                                <div class="form-group">
+                                    <label for="otp">OTP</label>
+                                    <input type="text" class="form-control" id="otp" placeholder="Enter OTP" required>
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="verifyOtp()">Verify OTP</button>
+                                <button type="button" class="btn btn-secondary" onclick="resendOtp()">Resend OTP</button>
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            <div id="message"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+        {% block content %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endblock %}
+    </main>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted">&copy; 2024 Bike Rental Service</span>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function sendOtp() {
+            const phoneNumber = document.getElementById('phone_number').value;
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = '';  // Clear any previous messages
+
+            fetch('http://127.0.0.1:8000/bikes/otpgen/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ number: phoneNumber }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.innerHTML = '<div class="alert alert-success">OTP sent successfully!</div>';
+                    document.getElementById('otpForm').style.display = 'none';
+                    document.getElementById('verifyOtpForm').style.display = 'block';
+                } else {
+                    messageDiv.innerHTML = '<div class="alert alert-danger">Failed to send OTP.</div>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                messageDiv.innerHTML = '<div class="alert alert-danger">An error occurred.</div>';
+            });
+        }
+
+        function verifyOtp() {
+            const phoneNumber = document.getElementById('phone_number').value;
+            const otp = document.getElementById('otp').value;
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = '';  // Clear any previous messages
+
+            fetch('http://127.0.0.1:8000/bikes/verifyotp/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ number: phoneNumber, otp: otp }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.innerHTML = '<div class="alert alert-success">OTP verified successfully!</div>';
+                    window.location.href = "{% url 'home' %}";  // Redirect to home page
+                } else {
+                    messageDiv.innerHTML = '<div class="alert alert-danger">' + data.message + '</div>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                messageDiv.innerHTML = '<div class="alert alert-danger">An error occurred.</div>';
+            });
+        }
+
+        function resendOtp() {
+            sendOtp();
+        }
+    </script>
+</body>
+</html>
